@@ -5,11 +5,13 @@ import { useSelector } from "react-redux";
 export default function Table(props) {
 
     const students = useSelector(state => state.students);
+    const studentfilterlength = props.studentfilter.length;
+    const search =  props.search;
         
     return (
         <div>
             {
-                (props.studentfilter.length === 0 && props.search !== "") ?
+                (studentfilterlength === 0 && search !== "") ?
                     <h1>No Student Found...</h1> : (
                         <table className="table">
                             {
@@ -26,7 +28,7 @@ export default function Table(props) {
                             }
                             <tbody>
                                 {
-                                    (props.search === "") ? students.map((student, index) => (
+                                    (search === "") ? students.map((student, index) => (
                                         <tr key={index}>
                                             <td>{student.rollno}</td>
                                             <td>{student.name}</td>
